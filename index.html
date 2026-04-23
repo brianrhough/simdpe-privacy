@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sim DPE — Privacy Policy</title>
+<style>
+  :root { --ink:#0f172a; --muted:#64748b; --accent:#14306a; --soft:#e7eefd; --bg:#ffffff; --card:#f8f9fb; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--ink); background: var(--bg); margin: 0; line-height: 1.6; }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 48px 24px 96px; }
+  header { border-bottom: 1px solid #e5e7eb; padding-bottom: 24px; margin-bottom: 32px; }
+  header h1 { font-size: 32px; margin: 0 0 8px; letter-spacing: -0.01em; }
+  header .meta { color: var(--muted); font-size: 14px; }
+  h2 { font-size: 22px; margin-top: 40px; margin-bottom: 12px; letter-spacing: -0.01em; }
+  h3 { font-size: 17px; margin-top: 24px; margin-bottom: 8px; }
+  p, li { font-size: 16px; }
+  a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+  hr { border: 0; border-top: 1px solid #e5e7eb; margin: 32px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #e5e7eb; font-size: 15px; vertical-align: top; }
+  th { background: var(--card); font-weight: 600; }
+  .tldr { background: var(--soft); border-radius: 12px; padding: 20px 24px; margin: 24px 0; }
+  .tldr h2 { margin-top: 0; color: var(--accent); }
+  .tldr ul { margin: 8px 0 0 0; padding-left: 20px; }
+  code { background: #f1f5f9; padding: 1px 6px; border-radius: 4px; font-size: 14px; }
+  footer { margin-top: 64px; color: var(--muted); font-size: 13px; text-align: center; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Sim DPE — Privacy Policy</h1>
+  <div class="meta">
+    <strong>Effective date:</strong> April 23, 2026 &nbsp;·&nbsp;
+    <strong>Developer:</strong> Brian Hough &nbsp;·&nbsp;
+    <strong>Contact:</strong> <a href="mailto:brian@houghmail.com">brian@houghmail.com</a>
+  </div>
+</header>
+
+<p>This Privacy Policy describes how the "Sim DPE — Private Pilot Prep" mobile app ("the App") handles your information.</p>
+
+<div class="tldr">
+  <h2>TL;DR</h2>
+  <ul>
+    <li>We do <strong>not</strong> run servers that collect your data. The App talks to <strong>your</strong> self-hosted backend — you provide the URL and API key.</li>
+    <li>The App requests <strong>microphone</strong> and <strong>speech recognition</strong> permission only so you can answer oral-exam questions out loud. Your audio is transcribed on your device and never stored by us.</li>
+    <li>Transcripts and quiz answers are sent to <strong>your backend</strong>, which forwards them to Anthropic (Claude) and ElevenLabs for question generation, grading, and the DPE's voice.</li>
+    <li>Your progress is stored <strong>locally on your iPhone</strong> using SwiftData. Nothing is uploaded to a central server we operate.</li>
+    <li>The App contains <strong>no third-party analytics, no tracking, and no advertising identifiers</strong>.</li>
+  </ul>
+</div>
+
+<h2>1. Information the App processes</h2>
+
+<h3>1.1 Information you give us</h3>
+<ul>
+  <li><strong>Oral-exam speech</strong> — when you tap "Hold to Talk" during an oral practice session, your voice is captured by the iPhone's microphone, transcribed on-device using Apple's Speech framework (or, when offline on-device recognition isn't available, via Apple's servers as permitted by iOS), and the resulting text is sent to your configured backend.</li>
+  <li><strong>Typed answers</strong> — when you answer a multiple-choice or short-answer question, your answer text is sent to your backend for grading.</li>
+  <li><strong>ACS task selections</strong> — which topic you're studying at any moment.</li>
+</ul>
+
+<h3>1.2 Information stored on your device only</h3>
+<p>Using Apple's SwiftData framework, the App stores:</p>
+<ul>
+  <li>Your quiz attempts (question, your answer, score, feedback, timestamp)</li>
+  <li>Your oral-session summaries (final score, date)</li>
+  <li>App settings (dark mode, voice speed)</li>
+</ul>
+<p>This data lives on your iPhone and is included in your encrypted device backup (iCloud or iTunes) if you enable it. It is not shared with us.</p>
+
+<h3>1.3 Information the App does <em>not</em> collect</h3>
+<ul>
+  <li>No name, email, phone number, or login credentials</li>
+  <li>No location data</li>
+  <li>No advertising identifier</li>
+  <li>No device contacts, calendars, photos, or files</li>
+  <li>No crash reports except the default Apple diagnostics (controlled by your iOS privacy settings)</li>
+</ul>
+
+<h2>2. Third-party services invoked by your backend</h2>
+<p>Your self-hosted SimDPE backend, when running, passes your questions and answers to:</p>
+<ul>
+  <li><strong>Anthropic</strong> (api.anthropic.com) — generates quiz questions, grades answers, and plays the DPE examiner role. <a href="https://www.anthropic.com/legal/privacy">Anthropic's privacy policy</a>.</li>
+  <li><strong>ElevenLabs</strong> (api.elevenlabs.io) — synthesizes the DPE's voice (text-to-speech). <a href="https://elevenlabs.io/privacy">ElevenLabs' privacy policy</a>.</li>
+</ul>
+<p>These calls use API keys you register with Anthropic and ElevenLabs yourself. Those vendors process data per their own terms. We have no visibility into their usage of that data.</p>
+
+<h2>3. Permissions the App requests</h2>
+<table>
+  <thead><tr><th>Permission</th><th>Why</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Microphone</strong> (<code>NSMicrophoneUsageDescription</code>)</td><td>To capture your spoken answers during oral-exam practice.</td></tr>
+    <tr><td><strong>Speech Recognition</strong> (<code>NSSpeechRecognitionUsageDescription</code>)</td><td>To convert your speech to text so the AI examiner can evaluate it.</td></tr>
+  </tbody>
+</table>
+<p>You can revoke either permission at any time in iOS Settings → Sim DPE. Revoking disables oral practice; typed quizzes continue to work.</p>
+
+<h2>4. Data retention</h2>
+<ul>
+  <li><strong>Local data</strong> (quiz history, oral summaries, settings) — stored until you delete the App or reset its data from iOS Settings → General → iPhone Storage → Sim DPE → Delete App.</li>
+  <li><strong>Remote data</strong> — any data your backend logs or caches depends on how you configure it. Review your backend's logs policy.</li>
+</ul>
+<p>We (the App developer) retain nothing. We have no account system, no telemetry, and no cloud database.</p>
+
+<h2>5. Children</h2>
+<p>The App is not directed to children under 13. FAA private-pilot knowledge preparation is a niche study tool for adults (minimum age for a U.S. private-pilot license is 17). We do not knowingly collect any information from children.</p>
+
+<h2>6. Your rights</h2>
+<p>Because we do not collect or store your data on any server we operate, there is nothing for us to export or delete. To erase all local app data, uninstall the App. To erase data stored by your self-hosted backend or the third-party APIs it invokes, follow their respective procedures.</p>
+
+<h2>7. Security</h2>
+<ul>
+  <li>All network traffic between the App and your backend uses HTTPS (App Transport Security is enforced).</li>
+  <li>Your API key is stored in the App bundle's compiled code; no copy is transmitted to us.</li>
+  <li>Local SwiftData storage is protected by iOS file-system encryption when your device is locked.</li>
+</ul>
+
+<h2>8. Accuracy disclaimer</h2>
+<p>Sim DPE uses AI to generate practice questions and simulate an oral examiner. <strong>The App is a study aid, not official FAA content.</strong> Always verify facts against current FAA publications (PHAK 8083-25, Airplane Flying Handbook 8083-3, the current ACS, AIM, and 14 CFR). Do not rely solely on the App for checkride preparation.</p>
+
+<h2>9. Changes to this policy</h2>
+<p>Material changes will be posted in the App and at the URL configured as the "Privacy Policy" link in App Store Connect. The effective date above will be updated whenever this policy changes.</p>
+
+<h2>10. Contact</h2>
+<p>Questions about this policy: <a href="mailto:brian@houghmail.com">brian@houghmail.com</a></p>
+
+<footer>
+  Sim DPE — Private Pilot Prep · © 2026 Brian Hough
+</footer>
+</div>
+</body>
+</html>
